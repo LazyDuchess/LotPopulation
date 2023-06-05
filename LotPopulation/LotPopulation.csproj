@@ -63,7 +63,6 @@
     <Compile Include="Main.cs" />
     <Compile Include="TimeUtils.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="Collections\WeightedList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib">
