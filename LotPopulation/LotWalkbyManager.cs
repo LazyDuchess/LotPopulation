@@ -137,6 +137,8 @@ namespace LazyDuchess.LotPopulation
                     if (sim.CurrentInteraction != null)
                         continue;
                 }
+                if (LotPopulationDescription.HasToWorkSoon(sim))
+                    continue;
                 if (sim.SimDescription.ChildOrBelow)
                     continue;
                 if (sim.IsSocializing)

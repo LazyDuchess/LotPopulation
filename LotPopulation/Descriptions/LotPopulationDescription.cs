@@ -191,6 +191,23 @@ namespace LazyDuchess.LotPopulation.Descriptions
             return weightedCandidates;
         }
 
+        public static bool HasToWorkSoon(Sim sim)
+        {
+            if (sim.Occupation == null)
+                return false;
+            if (sim.Occupation.IsSimGoingToWork())
+                return true;
+            if (sim.IsAtWork)
+                return true;
+            if (sim.Occupation.MissingWork)
+                return false;
+            if (Main.kMaxHoursBeforeWork <= 0f)
+                return false;
+            if (sim.Occupation.HoursUntilWork <= Main.kMaxHoursBeforeWork)
+                return true;
+            return false;
+        }
+
         List<Sim> GetVisitCandidates(Lot lot)
         {
             var candidates = new List<Sim>();
@@ -201,6 +218,8 @@ namespace LazyDuchess.LotPopulation.Descriptions
                     if (sim.CurrentInteraction != null)
                         continue;
                 }
+                if (HasToWorkSoon(sim))
+                    continue;
                 if (sim.LotCurrent == lot)
                     continue;
                 if (sim.IsSocializing)
@@ -307,6 +326,8 @@ namespace LazyDuchess.LotPopulation.Descriptions
                     if (sim.CurrentInteraction != null)
                         continue;
                 }
+                if (HasToWorkSoon(sim))
+                    continue;
                 if (sim.LotCurrent == lot)
                     continue;
                 if (sim.IsSocializing)

@@ -69,6 +69,8 @@ namespace LazyDuchess.LotPopulation
 		[Tunable] public static int kDemographicsMax = 20;
 		// Minimum amount of Sims in world for walkbys to show up.
 		[Tunable] public static int kWalkbyTotalSimsMinimum = 20;
+		// Sims won't populate lots or appear as walkbys if they have to go to work in these hours. Set this to 0 or lower to disable.
+		[Tunable] public static float kMaxHoursBeforeWork = 2f;
 
 		static Main()
 		{
